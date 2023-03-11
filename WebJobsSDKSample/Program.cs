@@ -44,7 +44,11 @@ namespace WebJobsSDKSample
                 });
                 builder.UseSerilog((context, services, loggerConfiguration) =>
                 {
-                    loggerConfiguration.WriteTo.ApplicationInsights(services.GetRequiredService<TelemetryConfiguration>(), TelemetryConverter.Traces);
+                    string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]!;
+                    if (!string.IsNullOrEmpty(instrumentationKey))
+                    {
+                        loggerConfiguration.WriteTo.ApplicationInsights(services.GetRequiredService<TelemetryConfiguration>(), TelemetryConverter.Traces);
+                    }
                     loggerConfiguration.ReadFrom.Configuration(context.Configuration);
                     loggerConfiguration.Enrich.FromLogContext();
                     loggerConfiguration.WriteTo.Console();
@@ -71,4 +75,5 @@ namespace WebJobsSDKSample
             }
         }
     }
+
 }
