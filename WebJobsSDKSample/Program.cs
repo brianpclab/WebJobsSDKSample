@@ -10,6 +10,8 @@ using Microsoft.Azure.Storage.Shared.Protocol;
 
 namespace WebJobsSDKSample
 {
+    //TO RUN AZURITE
+    //azurite --silent --location c:\azurite --debug c:\azurite\debug.log
     class Program
     {
         static async Task Main()
