@@ -40,10 +40,6 @@ namespace WebJobsSDKSample
                         b.AddApplicationInsightsWebJobs(o => o.InstrumentationKey = instrumentationKey);
                     }
                 });
-                builder.ConfigureWebJobs(b =>
-                {
-                    b.AddAzureStorageCoreServices();
-                });
                 builder.UseSerilog((context, services, loggerConfiguration) =>
                 {
                     string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]!;
