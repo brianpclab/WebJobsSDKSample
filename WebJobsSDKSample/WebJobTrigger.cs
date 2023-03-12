@@ -15,7 +15,7 @@ namespace WebJobsSDKSample
         {
             _logger = logger;
         }
-        public async Task ExecuteAsync([TimerTrigger("1 * * * * *")] TimerInfo timerInfo )
+        public async Task ExecuteAsync([TimerTrigger("%TRIGGERSCHEDULE%")] TimerInfo timerInfo )
         {
             if (timerInfo.IsPastDue)
             {
